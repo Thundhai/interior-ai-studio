@@ -13,6 +13,20 @@ Interior AI Studio is a comprehensive AI-powered design platform that combines:
 - **FastAPI backend** with REST endpoints
 - **Web scraping capabilities** for trend research and product sourcing
 
+## 🚀 Deployment Options
+
+### GitHub Deployment Features
+- **GitHub Actions CI/CD** - Automated testing and deployment
+- **GitHub Pages** - API documentation hosting
+- **Docker Hub Integration** - Automated container builds
+- **Environment Management** - Secure secrets handling
+
+### Production Deployment
+- **Docker Compose** - Multi-service orchestration
+- **Nginx Reverse Proxy** - SSL termination and load balancing
+- **Neo4j Database** - Knowledge graph persistence
+- **Health Monitoring** - System health checks
+
 ## 🤖 Available Agents
 
 ### Creative & Visualization
@@ -234,6 +248,76 @@ pytest tests/
 
 ## Auth
 Set `INTERIOR_AI_API_KEY` in `.env` and use `x-api-key` header for all API requests.
+
+## 🌐 Deployment
+
+### GitHub Actions CI/CD
+This project includes automated CI/CD with GitHub Actions:
+
+- **Automated Testing** - Runs on every push and PR
+- **Docker Build** - Validates container deployment
+- **API Documentation** - Auto-generates and deploys docs
+
+### Local Development
+```bash
+# Start development server
+uvicorn src.api:app --reload --host 127.0.0.1 --port 8000
+
+# Access documentation
+# http://127.0.0.1:8000/docs
+```
+
+### Docker Deployment
+```bash
+# Build and run locally
+docker-compose up --build
+
+# Production deployment
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Environment Setup
+1. Copy `.env.template` to `.env`
+2. Configure your API keys:
+   ```bash
+   GEMINI_API_KEY=your_actual_key_here
+   NEO4J_PASSWORD=your_secure_password
+   ```
+
+### GitHub Deployment Options
+
+#### Option 1: GitHub Pages (Documentation)
+- Automatic API documentation deployment
+- OpenAPI spec generation
+- Free hosting for project showcase
+
+#### Option 2: GitHub Codespaces
+- Complete development environment in the cloud
+- Pre-configured with all dependencies
+- Perfect for client demonstrations
+
+#### Option 3: Container Registry
+- Automated Docker builds
+- Deploy to any cloud provider
+- Scalable production hosting
+
+### Production Checklist
+- [ ] Configure SSL certificates in `nginx.conf`
+- [ ] Set up Neo4j database with proper authentication
+- [ ] Configure environment variables securely
+- [ ] Set up monitoring and logging
+- [ ] Configure backup strategies
+- [ ] Test all 18 agents in production environment
+
+### Cloud Deployment
+The project is ready for deployment on:
+- **Google Cloud Run** (recommended for Gemini API)
+- **AWS ECS/Fargate**
+- **Azure Container Instances**
+- **DigitalOcean App Platform**
+- **Railway/Render** (for demos)
+
+For detailed deployment instructions, see `DEPLOYMENT.md`.
 
 ## Attribution
 See `CLAUDE.md` for AI assistance acknowledgment.
