@@ -1,0 +1,33 @@
+{
+  "test_project": {
+    "visualization": {
+      "image_url": "[Replicate error: 401 Client Error: Unauthorized for url: https://api.replicate.com/v1/predictions]",
+      "materials": [
+        "marble",
+        "velvet",
+        "brass"
+      ],
+      "colors": [
+        "cream",
+        "navy",
+        "gold"
+      ],
+      "textures": [
+        "smooth",
+        "matte",
+        "glossy"
+      ]
+    }
+  },
+  "default": {
+    "visualization": {
+      "moodboard": true
+    },
+    "market": {
+      "furniture": true
+    },
+    "sustainability": {
+      "sustain": true
+    }
+  }
+}

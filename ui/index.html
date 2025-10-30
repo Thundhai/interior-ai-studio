@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interior AI Studio - Moodboard Export Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background: #f8f8fa; }
+    h1 { color: #2d2d2d; }
+    .image-grid { display: flex; flex-wrap: wrap; gap: 1em; }
+    .image-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 1em; width: 200px; }
+    .image-card img { width: 100%; border-radius: 4px; }
+    .tags { margin-top: 0.5em; }
+    .tag { display: inline-block; background: #e0e7ff; color: #3730a3; border-radius: 4px; padding: 0.2em 0.6em; margin: 0 0.2em 0.2em 0; font-size: 0.9em; }
+    .actions { margin: 2em 0; }
+    button { background: #6366f1; color: #fff; border: none; border-radius: 4px; padding: 0.7em 1.5em; font-size: 1em; cursor: pointer; }
+    button:disabled { background: #a5b4fc; }
+  </style>
+</head>
+<body>
+  <h1>Interior AI Studio - Moodboard Export Demo</h1>
+  <div class="actions">
+    <input id="query" type="text" placeholder="Enter design query..." value="luxury modern living room" style="padding:0.5em; width:300px;">
+    <button onclick="fetchMoodboard()">Get Moodboard</button>
+    <button onclick="exportTags()" id="exportBtn" disabled>Export Tags (JSON)</button>
+    <a id="downloadLink" style="display:none; margin-left:1em;">Download Exported JSON</a>
+  </div>
+  <div id="images" class="image-grid"></div>
+  <script>
+    let lastExportPath = null;
+    async function fetchMoodboard() {
+      document.getElementById('images').innerHTML = 'Loading...';
+      document.getElementById('exportBtn').disabled = true;
+      const query = document.getElementById('query').value;
+      const res = await fetch('/export_tagged_images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': 'demo-key' },
+        body: JSON.stringify({ query })
+      });
+      const data = await res.json();
+      lastExportPath = data.export_path;
+      // Fetch the exported JSON to display images
+      const jsonRes = await fetch(`/download_tagged_images?export_path=${encodeURIComponent(lastExportPath)}`, {
+        headers: { 'x-api-key': 'demo-key' }
+      });
+      const tagged = await jsonRes.json();
+      let images = tagged;
+      if (Array.isArray(tagged.images)) images = tagged.images;
+      if (!Array.isArray(images)) images = [];
+      document.getElementById('images').innerHTML = images.map(img => `
+        <div class="image-card">
+          <img src="${img.url}" alt="design inspiration">
+          <div class="tags">
+            ${(img.tags||[]).map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('exportBtn').disabled = false;
+      document.getElementById('downloadLink').style.display = 'none';
+    }
+    async function exportTags() {
+      if (!lastExportPath) return;
+      document.getElementById('downloadLink').innerText = 'Download Exported JSON';
+      document.getElementById('downloadLink').href = `/download_tagged_images?export_path=${encodeURIComponent(lastExportPath)}`;
+      document.getElementById('downloadLink').download = 'tagged_images.json';
+      document.getElementById('downloadLink').style.display = 'inline-block';
+    }
+  </script>
+</body>
+</html>
