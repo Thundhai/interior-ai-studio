@@ -6,9 +6,10 @@ import os
 import sys
 sys.path.append('.')
 
-# Set environment variables
+# Set environment variables for testing
 os.environ["INTERIOR_AI_API_KEY"] = "changeme"
-os.environ["GEMINI_API_KEY"] = "your-gemini-key-here"  # Replace with your actual key
+# NOTE: Set your actual Gemini API key in .env file or environment variables
+# os.environ["GEMINI_API_KEY"] = "your-actual-key-here"
 
 try:
     from src.main_agent import MainAgent
@@ -24,7 +25,7 @@ try:
     # Test 2: Gemini Vision API (if key is set)
     print("\n2️⃣ Testing Gemini Vision API...")
     test_image = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"
-    if main_agent.moodboard_agent.gemini_api_key and main_agent.moodboard_agent.gemini_api_key != "your-gemini-key-here":
+    if main_agent.moodboard_agent.gemini_api_key and main_agent.moodboard_agent.gemini_api_key != "":
         tags = main_agent.moodboard_agent.call_clip_blip_model(test_image)
         print(f"✅ Gemini tags: {tags}")
     else:
