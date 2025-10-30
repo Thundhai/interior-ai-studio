@@ -1,4 +1,11 @@
 """
+Interior AI Studio - Main Agent Orchestrator
+Copyright © 2025 Thundhai - All Rights Reserved
+
+PROPRIETARY SOFTWARE - TRADE SECRETS PROTECTED
+Contains proprietary multi-agent orchestration algorithms and business logic.
+Unauthorized use, copying, or reverse engineering is strictly prohibited.
+
 MainAgent (Orchestrator)
 - Routes tasks to sub-agents.
 - Handles project context and memory (placeholder).

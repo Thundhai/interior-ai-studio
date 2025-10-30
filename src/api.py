@@ -1,4 +1,11 @@
 """
+Interior AI Studio - FastAPI Application
+Copyright © 2025 Thundhai - All Rights Reserved
+
+PROPRIETARY SOFTWARE - UNAUTHORIZED USE PROHIBITED
+This software contains valuable trade secrets and proprietary algorithms.
+Commercial use, copying, or distribution requires written authorization.
+
 FastAPI app for Interior AI Studio
 - Exposes endpoints for each agent and project context
 - Now includes endpoints for budget, material, client preference, and competitor insights agents.

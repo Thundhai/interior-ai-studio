@@ -1,8 +1,14 @@
-# Interior AI Studio
-
 # Interior AI Studio 🏠🤖
 
+> **🔒 PROPRIETARY SOFTWARE - All Rights Reserved**  
+> **Copyright © 2025 Thundhai**  
+> **Unauthorized use, copying, or distribution is strictly prohibited**
+
 A sophisticated multi-agent AI system for luxury interior design, powered by 18 specialized agents and advanced knowledge graph technology.
+
+## ⚖️ **Legal Notice**
+
+This is **proprietary software** containing valuable trade secrets and intellectual property. Access is granted for **evaluation purposes only**. Commercial use, copying, or creating derivative works requires written authorization. See [LICENSE](LICENSE) for full terms.
 
 ## 🎯 Project Overview
 
