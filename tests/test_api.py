@@ -3,7 +3,7 @@ import pytest
 from fastapi.testclient import TestClient
 from src.api import app
 
-API_KEY = os.getenv("INTERIOR_AI_API_KEY", "changeme")
+API_KEY = os.getenv("INTERIOR_AI_API_KEY", "demo-changeme-not-secure")
 client = TestClient(app)
 
 def test_visualization_agent():

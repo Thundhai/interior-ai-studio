@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 from api import app
 
 client = TestClient(app)
-API_KEY = "changeme"  # Set to your test key or use os.environ
+API_KEY = "demo-changeme-not-secure"  # Use environment default for tests
 
 def test_budget_endpoint():
     response = client.post("/budget", json={"budget": 1000}, headers={"x-api-key": API_KEY})

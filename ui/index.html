@@ -34,14 +34,14 @@
       const query = document.getElementById('query').value;
       const res = await fetch('/export_tagged_images', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': 'demo-key' },
+        headers: { 'Content-Type': 'application/json', 'x-api-key': 'demo-changeme-not-secure' },
         body: JSON.stringify({ query })
       });
       const data = await res.json();
       lastExportPath = data.export_path;
       // Fetch the exported JSON to display images
       const jsonRes = await fetch(`/download_tagged_images?export_path=${encodeURIComponent(lastExportPath)}`, {
-        headers: { 'x-api-key': 'demo-key' }
+        headers: { 'x-api-key': 'demo-changeme-not-secure' }
       });
       const tagged = await jsonRes.json();
       let images = tagged;

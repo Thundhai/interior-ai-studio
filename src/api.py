@@ -78,8 +78,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Simple API key authentication
-API_KEY = os.getenv("INTERIOR_AI_API_KEY", "changeme")
+# API key authentication - MUST be changed in production
+API_KEY = os.getenv("INTERIOR_AI_API_KEY", "demo-changeme-not-secure")
 
 def verify_api_key(x_api_key: Optional[str] = Header(None)):
     if not x_api_key or x_api_key != API_KEY:

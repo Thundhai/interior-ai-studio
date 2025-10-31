@@ -13,7 +13,8 @@ COPY *.py ./
 
 # Environment variables
 ENV PYTHONPATH=/app
-ENV INTERIOR_AI_API_KEY=changeme
+# Security: Change this default key in production
+ENV INTERIOR_AI_API_KEY=demo-changeme-not-secure
 
 # Railway will set PORT dynamically - expose common port for reference
 EXPOSE 8000

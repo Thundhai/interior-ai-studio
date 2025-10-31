@@ -1,7 +1,7 @@
 {
-  "test_project": {
+  "demo_project": {
     "visualization": {
-      "image_url": "[Replicate error: 401 Client Error: Unauthorized for url: https://api.replicate.com/v1/predictions]",
+      "image_url": "Demo visualization completed",
       "materials": [
         "marble",
         "velvet",

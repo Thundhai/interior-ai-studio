@@ -98,7 +98,7 @@ export GEMINI_API_KEY="your-gemini-api-key"
 export REPLICATE_API_TOKEN="your-replicate-token"
 
 # Interior AI API Key (for security)
-export INTERIOR_AI_API_KEY="changeme"
+export INTERIOR_AI_API_KEY="your-secure-api-key-here"
 ```
 
 ### Running the Server
@@ -231,7 +231,7 @@ Then POST to `/agent/visualization` with:
 	}
 }
 ```
-Include header: `x-api-key: changeme` (or your key)
+Include header: `x-api-key: your-secure-api-key-here` (or your key)
 
 ### API Docs
 Visit [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
