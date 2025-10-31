@@ -18,8 +18,56 @@ from typing import Optional, Dict, Any
 from pydantic import BaseModel
 from src.main_agent import MainAgent
 
-app = FastAPI()
+app = FastAPI(
+    title="Interior AI Studio",
+    description="A sophisticated multi-agent AI system for luxury interior design",
+    version="1.0.0"
+)
 main_agent = MainAgent()
+
+# Health check endpoint for Railway/Cloud deployment
+@app.get("/")
+def root():
+    return {
+        "message": "Interior AI Studio - 18 Agent AI System",
+        "status": "running",
+        "version": "1.0.0",
+        "agents": 18
+    }
+
+# Agent list endpoint for health checks and API discovery
+@app.get("/agents")
+def get_agents():
+    return {
+        "total_agents": 18,
+        "agents": [
+            {"name": "MoodBoardAgent", "description": "AI image tagging and mood board generation"},
+            {"name": "VisualizationAgent", "description": "2D/3D renders via Replicate Stable Diffusion"},
+            {"name": "StyleAdvisorAgent", "description": "Trend analysis from fashion/lifestyle sites"},
+            {"name": "BudgetCostAdvisorAgent", "description": "IKEA/Wayfair/Houzz price scraping"},
+            {"name": "BudgetEstimatorAgent", "description": "Project cost estimation"},
+            {"name": "MaterialSourcingAgent", "description": "Material supplier sourcing"},
+            {"name": "ClientPreferenceAgent", "description": "Style profiling from surveys/moodboards"},
+            {"name": "CompetitorInsightsAgent", "description": "Competitor analysis"},
+            {"name": "ContentCreatorAgent", "description": "Marketing content generation"},
+            {"name": "BrandingAgent", "description": "Brand identity development"},
+            {"name": "ClientCommunicationAgent", "description": "Project communication management"},
+            {"name": "TrendResearchAgent", "description": "Design trend research"},
+            {"name": "SustainabilityAdvisorAgent", "description": "Eco-friendly recommendations"},
+            {"name": "SustainabilityMaterialAdvisorAgent", "description": "Green materials sourcing"},
+            {"name": "FurnitureAdvisorAgent", "description": "Furniture recommendations"},
+            {"name": "MarketResearchAgent", "description": "Houzz/Dezeen trend analysis"},
+            {"name": "ProjectPlannerAgent", "description": "Timeline and project management"},
+            {"name": "MainAgent", "description": "Orchestrates all agents and knowledge graph"}
+        ],
+        "endpoints": [
+            "/docs - Interactive API documentation",
+            "/agents - This endpoint",
+            "/moodboard - AI mood board generation",
+            "/smart_recommendations - AI design recommendations",
+            "/debug/gemini_test - Test AI vision capabilities"
+        ]
+    }
 
 # CORS middleware for frontend connections
 app.add_middleware(
