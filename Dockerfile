@@ -1,8 +1,3 @@
-"""
-Production Deployment Guide for Interior AI Studio
-"""
-
-# Option 1: Docker Deployment (Recommended)
 FROM python:3.10-slim
 
 WORKDIR /app
