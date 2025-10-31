@@ -6,7 +6,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application
+# Copy application and startup script
 COPY src/ ./src/
 COPY ui/ ./ui/
 COPY *.py ./
@@ -15,8 +15,8 @@ COPY *.py ./
 ENV PYTHONPATH=/app
 ENV INTERIOR_AI_API_KEY=changeme
 
-# Expose port
+# Railway will set PORT dynamically - expose common port for reference
 EXPOSE 8000
 
-# Run application
-CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run application using Python startup script that handles Railway's PORT
+CMD ["python", "start_server.py"]
