@@ -91,7 +91,7 @@ fetch(`${API_BASE}/moodboard`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'x-api-key': 'changeme'
+    'x-api-key': 'demo-changeme-not-secure'
   },
   body: JSON.stringify({query: "modern living room"})
 });
